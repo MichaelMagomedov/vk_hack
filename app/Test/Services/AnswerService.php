@@ -6,6 +6,7 @@ use App\Clients\Repositories\ClientRepository;
 use App\Test\Models\Answer;
 use App\Test\Models\TestResult;
 use App\Test\Repositories\AnswerRepository;
+use http\Exception\InvalidArgumentException;
 use Illuminate\Database\Eloquent\Collection;
 
 final class AnswerService
@@ -30,26 +31,32 @@ final class AnswerService
     {
         /** @var Answer $answer */
         $answer = $answers->get(0);
-        return $answer->question()->test()->results()->random(1)->first();
+        /** @var Collection $existResults */
+        $existResults = $answer->question->test->results;
+        if ($existResults->isEmpty()) {
+            throw new \InvalidArgumentException('this test does not have any results');
+        }
+
+        return $answer->question->test->results->random(1)->first();
     }
 
     public function saveAnswers(string $externalId, array $answerIds): array
     {
         $existClient = $this->clientRepository->getByExternalId($externalId);
+        $answers = $this->answerRepository->findByIds($answerIds);
+        $randomResult = $this->generateRandomResultByAnswers($answers);
         foreach ($answerIds as $answerId) {
             $existClient->answers()->attach($answerId);
         }
-        $answers = $this->answerRepository->findByIds($answerIds);
         $answerProducts = $answers->pluck('products');
         $resultProducts = collect([]);
         /** @var Collection $products */
         foreach ($answerProducts as $products) {
             $resultProducts = $resultProducts->merge($products);
         }
-
         return [
             'products' => $resultProducts,
-            'result' => $this->generateRandomResultByAnswers($answers),
+            'result' => $randomResult,
         ];
     }
 }

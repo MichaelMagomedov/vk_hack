@@ -20,7 +20,5 @@ final class ClientService
 
     public function create(string $token): void
     {
-        $client = $this->clientRepository->getByToken($token);
-        $this->clientRepository->create($client);
     }
 }

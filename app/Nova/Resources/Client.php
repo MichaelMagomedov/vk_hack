@@ -18,7 +18,7 @@ class Client extends Resource
 
     public static function label()
     {
-        return 'Клиенты прошежшие тесты';
+        return 'Клиенты прошедшие тесты';
     }
 
     public static $search = ['first_name'];

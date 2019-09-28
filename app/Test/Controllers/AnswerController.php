@@ -5,7 +5,7 @@ namespace App\Test\Controllers;
 use App\Root\Http\Controllers\Controller;
 use App\Test\Services\AnswerService;
 use Illuminate\Http\Request;
-use VK\Exceptions\VKApiException;
+use Illuminate\Support\Facades\Validator;
 
 final class AnswerController extends Controller
 {
@@ -29,23 +29,19 @@ final class AnswerController extends Controller
 
     public function save()
     {
-        $this->validate($this->request, [
-            'externalId' => 'required',
+        $validator = Validator::make($this->request->all(), [
+            'external_id' => 'required',
             'answers' => 'required|array',
             'answers.*' => 'integer'
         ]);
-        if (!empty($errors)) {
-            return response()->json(['message' => 'fail validation'], 400);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()], 400);
         }
 
         $externalId = $this->request->get('external_id');
         $answers = $this->request->get('answers');
-
-        try {
-            $this->answerService->saveAnswers($externalId, $answers);
-        } catch (VKApiException $exception) {
-            return response()->json(['message' => $exception->getMessage()], 400);
-        }
+        $this->answerService->saveAnswers($externalId, $answers);
 
         return response()->json([
             'message' => 'success'
