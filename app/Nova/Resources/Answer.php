@@ -31,8 +31,11 @@ final class Answer extends Resource
             ID::make()->sortable(),
             Text::make('Ответ', 'text')->rules('required'),
             BelongsTo::make('Вопрос', 'question', Question::class)->rules('required'),
-            BelongsTo::make('Следующий вопрос', 'nextQuestion', Question::class)->nullable(),
+            BelongsTo::make('Следующий вопрос', 'nextQuestion', Question::class)
+                ->showOnIndex(false)
+                ->nullable(),
             BelongsToMany::make('Банковские продукты', 'products', Product::class),
         ];
     }
+
 }

@@ -35,8 +35,6 @@ final class Question extends Resource
                 ->rules('required'),
             Image::make('Картинка вопроса', 'img'),
             BelongsTo::make('Тест', 'test', Test::class),
-            BelongsTo::make('Предыдущий вопрос', 'parentQuestion', Question::class)
-                ->nullable(),
             HasMany::make('Возможные ответ', 'answers', Answer::class),
         ];
     }

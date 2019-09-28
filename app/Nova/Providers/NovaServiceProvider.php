@@ -2,7 +2,9 @@
 
 namespace App\Nova\Providers;
 
-use App\Nova\Resources\Test;
+use App\Nova\Dashboards\SplitTesing;
+use App\Nova\Filters\TestCategory;
+use App\Nova\Metrics\ClientProductsByCategory;
 use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
@@ -48,6 +50,12 @@ final class NovaServiceProvider extends NovaApplicationServiceProvider
         });
     }
 
+    public function cards()
+    {
+        return [
+        ];
+    }
+
     public function tools()
     {
         return [
@@ -55,4 +63,10 @@ final class NovaServiceProvider extends NovaApplicationServiceProvider
         ];
     }
 
+    protected function dashboards()
+    {
+        return [
+            (new SplitTesing())
+        ];
+    }
 }

@@ -31,11 +31,10 @@ class CreateTestCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_categories');
-
-        Schema::table('test', function (Blueprint $table) {
+        Schema::table('tests', function (Blueprint $table) {
             $table->dropColumn('category_id');
-            $table->string('category');
+            $table->string('category')->nullable();
         });
+        Schema::dropIfExists('test_categories');;
     }
 }

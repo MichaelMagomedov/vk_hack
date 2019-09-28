@@ -10,7 +10,6 @@ final class Question extends Model
 {
     protected $fillable = [
         'test_id',
-        'parent_id',
         'product_id',
         'img',
         'text',
@@ -26,10 +25,5 @@ final class Question extends Model
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);
-    }
-
-    public function parentQuestion(): BelongsTo
-    {
-        return $this->belongsTo(Question::class, 'parent_id');
     }
 }

@@ -42,6 +42,7 @@ class Client extends Resource
             Text::make('Facebook', 'facebook')->showOnIndex(false),
             Text::make('Instagram', 'instagram')->showOnIndex(false),
             BelongsToMany::make('Ответы на вопросы', 'answers', Answer::class),
+            BelongsToMany::make('Показаныне клиенту продукты ', 'products', Product::class),
         ];
     }
 }
