@@ -5,6 +5,7 @@ namespace App\Test\Controllers;
 use App\Root\Http\Controllers\Controller;
 use App\Test\Services\AnswerService;
 use Illuminate\Http\Request;
+use VK\Exceptions\VKApiException;
 
 final class AnswerController extends Controller
 {
@@ -39,7 +40,12 @@ final class AnswerController extends Controller
 
         $accessToken = $this->request->get('access_token');
         $answers = $this->request->get('answers');
-        $this->answerService->saveAnswers($accessToken, $answers);
+
+        try {
+            $this->answerService->saveAnswers($accessToken, $answers);
+        } catch (VKApiException $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
 
         return response()->json([
             'message' => 'success'
