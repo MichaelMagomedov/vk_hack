@@ -31,15 +31,13 @@ final class ClientController extends Controller
 
     public function create()
     {
-        try{
-        $this->validate($this->request, ['access_token' => 'required']);
-        }catch (\Exception $exception){
+        try {
+            $this->validate($this->request, ['access_token' => 'required']);
+            $accessToken = $this->request->get('access_token');
+            $this->clientService->create($accessToken);
+        } catch (\Exception $exception) {
             return var_dump($exception->getMessage());
         }
-
-
-        $accessToken = $this->request->get('access_token');
-        $this->clientService->create($accessToken);
 
         return view('welcome');
     }
