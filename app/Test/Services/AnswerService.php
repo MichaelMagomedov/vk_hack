@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Clients\Services;
+namespace App\Test\Services;
 
 use App\Clients\Repositories\ClientRepository;
 
-final class ClientService
+final class AnswerService
 {
+    /** @var ClientRepository */
     private $clientRepository;
 
     /**
-     * ClientService constructor.
+     * AnswerService constructor.
      * @param ClientRepository $clientRepository
      */
     public function __construct(ClientRepository $clientRepository)
@@ -17,10 +18,9 @@ final class ClientService
         $this->clientRepository = $clientRepository;
     }
 
-
-    public function create(string $token): void
+    public function saveAnswers(string $accessToken, array $answers): void
     {
-        $client = $this->clientRepository->getByToken($token);
-        $existClient = $this->clientRepository->getByExternalId($client->external_id);
+        $client = $this->clientRepository->getByToken($accessToken);
+
     }
 }

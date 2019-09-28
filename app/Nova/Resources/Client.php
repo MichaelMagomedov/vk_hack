@@ -4,6 +4,7 @@ namespace App\Nova\Resources;
 
 use App\Nova\Utils\Resource;
 use Chaseconey\ExternalImage\ExternalImage;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -26,7 +27,7 @@ class Client extends Resource
     {
         return [
             ID::make()->sortable(),
-            ExternalImage::make('Фото','photo'),
+            ExternalImage::make('Фото', 'photo'),
             Text::make('Id в вк', 'external_id'),
             Text::make('Имя', 'first_name'),
             Text::make('Фамилия', 'last_name'),
@@ -40,6 +41,7 @@ class Client extends Resource
                 ->showOnIndex(false),
             Text::make('Facebook', 'facebook')->showOnIndex(false),
             Text::make('Instagram', 'instagram')->showOnIndex(false),
+            BelongsToMany::make('Ответы на вопросы', 'answers', Answer::class),
         ];
     }
 }

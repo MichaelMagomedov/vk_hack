@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionProductsTable extends Migration
+class CreateClientAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateQuestionProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('answer_products', function (Blueprint $table) {
+        Schema::create('client_answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('answer_id')->nullable();
-            $table->bigInteger('product_id')->nullable();
+            $table->bigInteger('client_id')->nullable();
             $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
         });
+
     }
 
     /**
@@ -29,6 +30,6 @@ class CreateQuestionProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_products');
+        Schema::dropIfExists('client_answers');
     }
 }

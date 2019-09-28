@@ -2,8 +2,9 @@
 
 namespace App\Clients\Models;
 
-use App\Root\Utils\Traits\InsertOnDuplicate;
+use App\Test\Models\Answer;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class Client extends Model
 {
@@ -21,4 +22,9 @@ final class Client extends Model
     ];
 
     public $timestamps = false;
+
+    public function answers(): BelongsToMany
+    {
+        return $this->belongsToMany(Answer::class, 'client_answers', 'client_id', 'answer_id');
+    }
 }
