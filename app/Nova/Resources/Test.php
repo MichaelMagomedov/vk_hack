@@ -32,7 +32,8 @@ class Test extends Resource
             Text::make('Категория', 'category')->rules('required'),
             Textarea::make('Описание', 'desc')->rules('required'),
             Image::make('Фото(превью)', 'img')->rules('required'),
-            HasMany::make( 'Вопросы теста', 'questions', Question::class)
+            HasMany::make('Вопросы теста', 'questions', Question::class),
+            HasMany::make('Возможные результаты теста', 'questions', TestResult::class)
         ];
     }
 }

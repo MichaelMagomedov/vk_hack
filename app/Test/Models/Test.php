@@ -20,4 +20,9 @@ final class Test extends Model
     {
         return $this->hasMany(Question::class, 'test_id');
     }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(TestResult::class, 'test_id');
+    }
 }
