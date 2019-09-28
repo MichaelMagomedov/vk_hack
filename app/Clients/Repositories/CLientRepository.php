@@ -8,6 +8,8 @@ class CLientRepository
 {
     public function create(Client $client)
     {
-        Client::insertOnDuplicateKey($client->getAttributes());
+        Client::query()->updateOrCreate([
+            'external_id' => $client->external_id
+        ], $client->getAttributes());
     }
 }

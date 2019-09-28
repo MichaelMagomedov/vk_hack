@@ -29,10 +29,10 @@ class VkClientMapper
                 ? $response['relatives'][0]['id']
                 : null,
             'instagram' => !empty($response['instagram'])
-                ? $response['instagram']
+                ? 'https://www.instagram.com/'.$response['instagram']
                 : null,
             'facebook' => !empty($response['facebook'])
-                ? $response['facebook']
+                ? 'https://www.facebook.com/'.$response['facebook']
                 : null
         ]);
     }

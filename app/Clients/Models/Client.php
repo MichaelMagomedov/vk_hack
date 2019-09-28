@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 final class Client extends Model
 {
-    use InsertOnDuplicate;
-
     protected $fillable = [
         'first_name',
         'last_name',

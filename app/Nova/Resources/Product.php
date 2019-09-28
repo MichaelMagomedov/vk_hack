@@ -3,6 +3,7 @@
 namespace App\Nova\Resources;
 
 use App\Nova\Utils\Resource;
+use Froala\NovaFroalaField\Froala;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class Product extends Resource
             ID::make()->sortable(),
             Text::make('Название', 'name')->rules('required'),
             Text::make('ссылка', 'url')->rules('required'),
-            Textarea::make('Описание', 'desc')->rules('required'),
+            Froala::make('Описание', 'desc')->rules('required'),
             Image::make('Фото(превью)', 'img')->rules('required'),
         ];
     }

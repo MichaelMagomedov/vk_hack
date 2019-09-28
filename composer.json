@@ -9,8 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "chaseconey/nova-external-image": "^0.1.0",
         "coderello/laravel-nova-lang": "^1.2",
         "fideloper/proxy": "^4.0",
+        "froala/nova-froala-field": "^3.2",
         "laravel/framework": "^6.0",
         "laravel/nova": "^2.0",
         "laravel/tinker": "^1.0",
