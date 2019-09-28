@@ -10,7 +10,8 @@ class Test extends Model
     protected $fillable = [
         'name',
         'desc',
-        'img'
+        'img',
+        'category'
     ];
 
     public $timestamps = false;
