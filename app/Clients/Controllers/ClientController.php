@@ -6,6 +6,8 @@ use App\Clients\Services\ClientService;
 use App\Root\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use mysql_xdevapi\Exception;
 
 final class ClientController extends Controller
 {
@@ -27,12 +29,14 @@ final class ClientController extends Controller
     }
 
 
-    public function create(): JsonResponse
+    public function create()
     {
+        try{
         $this->validate($this->request, ['access_token' => 'required']);
-        if (!empty($errors)) {
-            return response()->json(['message' => 'fail validation'], 400);
+        }catch (\Exception $exception){
+            return var_dump($exception->getMessage());
         }
+
 
         $accessToken = $this->request->get('access_token');
         $this->clientService->create($accessToken);
