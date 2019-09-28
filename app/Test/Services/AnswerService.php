@@ -54,8 +54,9 @@ final class AnswerService
         foreach ($answerProducts as $products) {
             $resultProducts = $resultProducts->merge($products);
         }
+        $randomProduct = $resultProducts->random(1)->first();
         return [
-            'products' => $resultProducts,
+            'products' => $randomProduct,
             'result' => $randomResult,
         ];
     }

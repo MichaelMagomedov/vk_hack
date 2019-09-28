@@ -3,6 +3,7 @@
 namespace App\Nova\Resources;
 
 use App\Nova\Utils\Resource;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -29,9 +30,10 @@ class Test extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Название', 'name')->rules('required'),
-            Text::make('Категория', 'category')->rules('required'),
             Textarea::make('Описание', 'desc')->rules('required'),
-            Image::make('Фото(превью)', 'img')->rules('required'),
+            Image::make('Фото(превью)', 'img')->creationRules('required'),
+            BelongsTo::make('Категория теста', 'category', TestCategory::class)
+                ->nullable(false),
             HasMany::make('Вопросы теста', 'questions', Question::class),
             HasMany::make('Возможные результаты теста', 'results', TestResult::class)
         ];

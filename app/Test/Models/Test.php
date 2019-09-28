@@ -3,6 +3,7 @@
 namespace App\Test\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Test extends Model
@@ -11,7 +12,6 @@ final class Test extends Model
         'name',
         'desc',
         'img',
-        'category'
     ];
 
     public $timestamps = false;
@@ -24,5 +24,10 @@ final class Test extends Model
     public function results(): HasMany
     {
         return $this->hasMany(TestResult::class, 'test_id');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(TestCategory::class, 'category_id');
     }
 }
