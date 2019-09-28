@@ -29,6 +29,7 @@ class Test extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Название', 'name')->rules('required'),
+            Text::make('Категория', 'category')->rules('required'),
             Textarea::make('Описание', 'desc')->rules('required'),
             Image::make('Фото(превью)', 'img')->rules('required'),
             HasMany::make( 'Вопросы теста', 'questions', Question::class)
