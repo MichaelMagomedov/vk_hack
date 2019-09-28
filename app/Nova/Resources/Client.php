@@ -27,6 +27,7 @@ class Client extends Resource
         return [
             ID::make()->sortable(),
             Image::make('Фото', 'photo')
+                ->ur
                 ->showOnIndex(false),
             Text::make('Id в вк', 'external_id'),
             Text::make('Имя', 'first_name'),
@@ -35,7 +36,6 @@ class Client extends Resource
                 ->showOnIndex(false),
             Text::make('Семейное положение', 'relation')
                 ->showOnIndex(false),
-            Text::make('Мобильный телефон', 'mobile_phone'),
             Text::make('Домашний телефон', 'home_phone')
                 ->showOnIndex(false),
             Text::make('Ближайший родственник', 'relative_id')

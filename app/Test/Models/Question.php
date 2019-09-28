@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use phpDocumentor\Reflection\Types\Static_;
 
-class Question extends Model
+final class Question extends Model
 {
     protected $fillable = [
         'test_id',
@@ -17,7 +15,6 @@ class Question extends Model
         'product_id',
         'img',
         'text',
-        'type',
     ];
 
     public $timestamps = false;

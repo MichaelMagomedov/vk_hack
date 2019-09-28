@@ -3,14 +3,12 @@
 namespace App\Nova\Resources;
 
 use App\Nova\Utils\Resource;
-use App\Test\Enums\QuestionTypesEnum;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Textarea;
 
 class Question extends Resource
@@ -35,9 +33,6 @@ class Question extends Resource
             ID::make()->sortable(),
             Textarea::make('Вопрос', 'text')
                 ->showOnIndex()
-                ->rules('required'),
-            Select::make('Тип ответа', 'type')->options(QuestionTypesEnum::$lables)
-                ->showOnIndex(false)
                 ->rules('required'),
             Image::make('Картинка вопроса', 'img'),
             BelongsTo::make('Тест', 'test', Test::class),

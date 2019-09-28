@@ -5,7 +5,7 @@ namespace App\Test\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Test extends Model
+final class Test extends Model
 {
     protected $fillable = [
         'name',

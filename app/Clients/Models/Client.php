@@ -2,10 +2,13 @@
 
 namespace App\Clients\Models;
 
+use App\Root\Utils\Traits\InsertOnDuplicate;
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+final class Client extends Model
 {
+    use InsertOnDuplicate;
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -13,10 +16,10 @@ class Client extends Model
         'photo',
         'university_name',
         'relation',
-        'mobile_phone',
         'home_phone',
         'relative_id',
         'instagram',
+        'facebook',
     ];
 
     public $timestamps = false;

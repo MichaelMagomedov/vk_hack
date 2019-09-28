@@ -17,7 +17,6 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('text');
 
-            $table->string('type');
             $table->string('img')->nullable();
 
             $table->bigInteger('test_id')->nullable();

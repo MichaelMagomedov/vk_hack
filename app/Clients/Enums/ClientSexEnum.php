@@ -2,7 +2,7 @@
 
 namespace App\CLients\Enums;
 
-class ClientSexEnum
+final class ClientSexEnum
 {
     const TYPE_MEN = 2;
     const TYPE_WOMEN = 1;
