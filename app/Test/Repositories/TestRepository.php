@@ -10,7 +10,9 @@ final class TestRepository
     public final function findById(int $id): Test
     {
         return Test::with([
-            'questions',
+            'questions' => function($query) {
+		$query->orderBy('id');
+	    },
             'questions.answers',
         ])->whereId($id)->first();
     }
