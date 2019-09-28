@@ -3,7 +3,7 @@
 namespace App\Nova\Resources;
 
 use App\Nova\Utils\Resource;
-use Faker\Provider\bn_BD\Utils;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
@@ -30,7 +30,8 @@ class Test extends Resource
             ID::make()->sortable(),
             Text::make('Название', 'name')->rules('required'),
             Textarea::make('Описание', 'desc')->rules('required'),
-            Image::make('Фото(превью)', 'img')->rules('required')
+            Image::make('Фото(превью)', 'img')->rules('required'),
+            HasMany::make( 'Вопросы теста', 'questions', Question::class)
         ];
     }
 }

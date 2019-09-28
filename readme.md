@@ -2,6 +2,7 @@
 <ul>
     <li>php artisan migrate</li>
     <li>pgp artisan db:seed</li>
+    <li>php artisan storage:link</li>
 </ul>
 <h5>Доступы</h5>
 <ul>
