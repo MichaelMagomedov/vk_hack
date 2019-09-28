@@ -6,6 +6,7 @@ use App\Clients\Services\ClientService;
 use App\Root\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use VK\Exceptions\VKApiException;
 
 final class ClientController extends Controller
 {
@@ -27,10 +28,19 @@ final class ClientController extends Controller
     }
 
 
-    public function createNew(): JsonResponse
+    public function create(): JsonResponse
     {
-//        $accessToken = $this->request->get('access_token');
-        $this->clientService->createNew('7a0423c6eddc11c8286f9ab6bf74324c80c14eccc815ce5909e554b052451736f135f971b334f8d24d0b6');
+        $this->validate($this->request, ['access_token' => 'required']);
+        if (!empty($errors)) {
+            return response()->json(['message' => 'fail validation'], 400);
+        }
+
+        try {
+            $accessToken = $this->request->get('access_token');
+            $this->clientService->create($accessToken);
+        } catch (VKApiException $exception) {
+            return response()->json(['message' => $exception->getMessage()], 400);
+        }
 
         return response()->json([
             'message' => 'success'

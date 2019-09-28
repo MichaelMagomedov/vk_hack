@@ -4,7 +4,7 @@ namespace App\Clients\Repositories;
 
 use App\Clients\Models\Client;
 
-class CLientRepository
+final class ClientRepository
 {
     public function create(Client $client)
     {

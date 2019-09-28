@@ -9,7 +9,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 
-class Answer extends Resource
+final class Answer extends Resource
 {
 
     public static $model = \App\Test\Models\Answer::class;

@@ -1,3 +1,4 @@
 <?php
 
-Route::get('/client', '\\App\\Clients\\Controllers\\ClientController@createNew');
+Route::post('/client', '\\App\\Clients\\Controllers\\ClientController@create');
+Route::get('/test/{id}', '\\App\\Test\\Controllers\\TestController@getById');

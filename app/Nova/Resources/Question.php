@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Textarea;
 
-class Question extends Resource
+final class Question extends Resource
 {
 
     public static $model = \App\Test\Models\Question::class;

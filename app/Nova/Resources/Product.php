@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 
-class Product extends Resource
+final class Product extends Resource
 {
 
     public static $model = \App\Test\Models\Product::class;

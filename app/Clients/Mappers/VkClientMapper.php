@@ -4,7 +4,7 @@ namespace App\Clients\Mappers;
 
 use App\Clients\Models\Client;
 
-class VkClientMapper
+final class VkClientMapper
 {
     public static function create(array $response): Client
     {

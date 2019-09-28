@@ -4,27 +4,27 @@ namespace App\Clients\Services;
 
 use App\Clients\Mappers\VkClientMapper;
 use App\Clients\Models\Client;
-use App\Clients\Repositories\CLientRepository;
+use App\Clients\Repositories\ClientRepository;
 use VK\Client\VKApiClient;
 
 final class ClientService
 {
     private $vkClient;
-    /** @var CLientRepository */
+    /** @var ClientRepository */
     private $clientRepository;
 
     /**
      * ClientService constructor.
-     * @param CLientRepository $clientRepository
+     * @param ClientRepository $clientRepository
      */
-    public function __construct(CLientRepository $clientRepository)
+    public function __construct(ClientRepository $clientRepository)
     {
         $this->vkClient = new VKApiClient();
         $this->clientRepository = $clientRepository;
     }
 
 
-    public function createNew(string $token): void
+    public function create(string $token): void
     {
         $response = $this->vkClient->users()->get($token, array(
             'fields' => [
