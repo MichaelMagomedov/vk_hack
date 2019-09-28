@@ -171,10 +171,9 @@ return [
          */
         App\Root\Providers\AppServiceProvider::class,
         App\Root\Providers\AuthServiceProvider::class,
-        // App\Root\Providers\BroadcastServiceProvider::class,
         App\Root\Providers\EventServiceProvider::class,
         App\Root\Providers\RouteServiceProvider::class,
-        \App\Nova\Providers\NovaServiceProvider::class
+        \App\Nova\Providers\NovaServiceProvider::class,
     ],
 
     /*

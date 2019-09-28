@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'vkontakte' => [
+        'client_id'     => env('VKONTAKTE_KEY'),
+        'client_secret' => env('VKONTAKTE_SECRET'),
+    ],
+
 ];

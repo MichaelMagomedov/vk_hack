@@ -16,10 +16,13 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('text');
+
             $table->string('type');
             $table->string('img')->nullable();
+
             $table->bigInteger('test_id')->nullable();
             $table->bigInteger('parent_id')->nullable();
+
             $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');
             $table->foreign('parent_id')->references('id')->on('questions')->onDelete('cascade');
         });
