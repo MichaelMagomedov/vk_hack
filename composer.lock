@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdec6fe54469fb2c5850ecee0e537b8a",
+    "content-hash": "0addcb2a1105660ddd40cd922a0ecdf4",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -103,6 +103,48 @@
                 "nova"
             ],
             "time": "2019-08-13T03:17:00+00:00"
+        },
+        {
+            "name": "chris-ware/nova-breadcrumbs",
+            "version": "1.2.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chris-ware/nova-breadcrumbs.git",
+                "reference": "8aca4fcad48f4798b04ae82370b7211e2eb28985"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chris-ware/nova-breadcrumbs/zipball/8aca4fcad48f4798b04ae82370b7211e2eb28985",
+                "reference": "8aca4fcad48f4798b04ae82370b7211e2eb28985",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": ">=2.0.0 <=2.2.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ChrisWare\\NovaBreadcrumbs\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ChrisWare\\NovaBreadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-09-04T17:31:35+00:00"
         },
         {
             "name": "coderello/laravel-nova-lang",
