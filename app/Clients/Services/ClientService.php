@@ -21,6 +21,6 @@ final class ClientService
     public function create(string $token): void
     {
         $client = $this->clientRepository->getByToken($token);
-        $existClient = $this->clientRepository->getByExternalId($client->external_id);
+        $this->clientRepository->create($client);
     }
 }

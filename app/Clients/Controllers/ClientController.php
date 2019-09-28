@@ -6,7 +6,6 @@ use App\Clients\Services\ClientService;
 use App\Root\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use VK\Exceptions\VKApiException;
 
 final class ClientController extends Controller
 {
@@ -35,15 +34,10 @@ final class ClientController extends Controller
             return response()->json(['message' => 'fail validation'], 400);
         }
 
-        try {
-            $accessToken = $this->request->get('access_token');
-            $this->clientService->create($accessToken);
-        } catch (VKApiException $exception) {
-            return response()->json(['message' => $exception->getMessage()], 400);
-        }
+        $accessToken = $this->request->get('access_token');
+        $this->clientService->create($accessToken);
 
-        return response()->json([
-            'message' => 'success'
-        ]);
+        return view('welcome');
     }
 }
+

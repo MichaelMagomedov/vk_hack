@@ -30,7 +30,7 @@ final class AnswerController extends Controller
     public function save()
     {
         $this->validate($this->request, [
-            'access_token' => 'required',
+            'externalId' => 'required',
             'answers' => 'required|array',
             'answers.*' => 'integer'
         ]);
@@ -38,11 +38,11 @@ final class AnswerController extends Controller
             return response()->json(['message' => 'fail validation'], 400);
         }
 
-        $accessToken = $this->request->get('access_token');
+        $externalId = $this->request->get('external_id');
         $answers = $this->request->get('answers');
 
         try {
-            $this->answerService->saveAnswers($accessToken, $answers);
+            $this->answerService->saveAnswers($externalId, $answers);
         } catch (VKApiException $exception) {
             return response()->json(['message' => $exception->getMessage()], 400);
         }

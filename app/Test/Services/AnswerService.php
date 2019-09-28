@@ -33,10 +33,9 @@ final class AnswerService
         return $answer->question()->test()->results()->random(1)->first();
     }
 
-    public function saveAnswers(string $accessToken, array $answerIds): array
+    public function saveAnswers(string $externalId, array $answerIds): array
     {
-        $client = $this->clientRepository->getByToken($accessToken);
-        $existClient = $this->clientRepository->getByExternalId($client->external_id);
+        $existClient = $this->clientRepository->getByExternalId($externalId);
         foreach ($answerIds as $answerId) {
             $existClient->answers()->attach($answerId);
         }
