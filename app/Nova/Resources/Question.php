@@ -5,6 +5,7 @@ namespace App\Nova\Resources;
 use App\Nova\Utils\Resource;
 use App\Test\Enums\QuestionTypesEnum;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
@@ -41,6 +42,8 @@ class Question extends Resource
             BelongsTo::make('Тест', 'test', Test::class),
             BelongsTo::make('Предыдущий вопрос', 'parentQuestion', Question::class)
                 ->nullable(),
+            HasMany::make('Возмоные ответ', 'answers', Answer::class),
+
         ];
     }
 }
