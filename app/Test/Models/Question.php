@@ -34,9 +34,4 @@ class Question extends Model
     {
         return $this->belongsTo(Question::class, 'parent_id');
     }
-
-    public function question(): HasOne
-    {
-        return $this->hasOne(Question::class, 'parent_id');
-    }
 }

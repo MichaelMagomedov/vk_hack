@@ -32,14 +32,12 @@ class Question extends Resource
                 ->showOnIndex()
                 ->rules('required'),
             Select::make('Тип ответа', 'type')->options(QuestionTypesEnum::$lables)
-                ->onlyOnForms()
+                ->showOnIndex(false)
                 ->rules('required'),
             Image::make('Картинка вопроса', 'img'),
-            BelongsTo::make('Тест', 'test', Test::class)->nullable(),
+            BelongsTo::make('Тест', 'test', Test::class),
             BelongsTo::make('Предыдущий вопрос', 'parentQuestion', Question::class)
-                ->onlyOnForms()
                 ->nullable(),
-            HasOne::make('Под вопрос', 'question', Question::class)
         ];
     }
 }
