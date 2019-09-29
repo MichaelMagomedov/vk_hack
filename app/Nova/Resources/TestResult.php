@@ -2,7 +2,7 @@
 
 namespace App\Nova\Resources;
 
-use App\Nova\Utils\Resource;
+use App\Nova\Resource;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;

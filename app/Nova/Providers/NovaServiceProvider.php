@@ -62,11 +62,4 @@ final class NovaServiceProvider extends NovaApplicationServiceProvider
             \ChrisWare\NovaBreadcrumbs\NovaBreadcrumbs::make(),
         ];
     }
-
-    protected function dashboards()
-    {
-        return [
-            (new SplitTesing())
-        ];
-    }
 }

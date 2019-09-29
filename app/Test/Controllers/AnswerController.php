@@ -41,10 +41,10 @@ final class AnswerController extends Controller
 
         $externalId = $this->request->get('external_id');
         $answers = $this->request->get('answers');
-        $this->answerService->saveAnswers($externalId, $answers);
+        $result = $this->answerService->saveAnswers($externalId, $answers);
 
         return response()->json([
-            'message' => 'success'
+            'message' => $result
         ]);
     }
 

@@ -25,7 +25,7 @@ class RemoveParentIdQuestion extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $blueprint) {
+        Schema::table('questions', function (Blueprint $table) {
             $table->bigInteger('parent_id')->nullable();
             $table->foreign('parent_id')->references('id')->on('questions')->onDelete('cascade');
         });

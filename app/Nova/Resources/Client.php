@@ -2,7 +2,7 @@
 
 namespace App\Nova\Resources;
 
-use App\Nova\Utils\Resource;
+use App\Nova\Resource;
 use Chaseconey\ExternalImage\ExternalImage;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;

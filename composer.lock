@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e434dfdf1f82a9c60d5b600488620e8d",
+    "content-hash": "d3173a1f6549a5039cf04edadeace94f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1058,6 +1058,53 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "kirschbaum-development/nova-chartjs",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kirschbaum-development/nova-chartjs.git",
+                "reference": "ab3c01989b11d2dc8e26f9ff15c18f904e9bd8f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kirschbaum-development/nova-chartjs/zipball/ab3c01989b11d2dc8e26f9ff15c18f904e9bd8f5",
+                "reference": "ab3c01989b11d2dc8e26f9ff15c18f904e9bd8f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "^3.8",
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "KirschbaumDevelopment\\NovaChartjs\\NovaChartjsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KirschbaumDevelopment\\NovaChartjs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "chart.js Chart Field for Laravel Nova",
+            "keywords": [
+                "Chart.js",
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-09-05T12:16:46+00:00"
         },
         {
             "name": "laravel/framework",

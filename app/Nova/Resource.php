@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Nova\Utils;
+namespace App\Nova;
 
 use ChrisWare\NovaBreadcrumbs\Traits\Breadcrumbs;
 use Laravel\Nova\Http\Requests\NovaRequest;

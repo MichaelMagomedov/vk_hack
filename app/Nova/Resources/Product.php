@@ -2,14 +2,12 @@
 
 namespace App\Nova\Resources;
 
-use App\Nova\Utils\Resource;
+use App\Nova\Resource;
 use Froala\NovaFroalaField\Froala;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 
 final class Product extends Resource
 {

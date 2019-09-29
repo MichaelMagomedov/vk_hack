@@ -2,7 +2,7 @@
 
 namespace App\Nova\Resources;
 
-use App\Nova\Utils\Resource;
+use App\Nova\Resource;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -28,4 +28,5 @@ final class TestCategory extends Resource
             Text::make('Название', 'name')->rules('required'),
         ];
     }
+
 }
