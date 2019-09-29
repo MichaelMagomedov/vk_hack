@@ -11,7 +11,7 @@ final class TestRepository
     {
         return Test::with([
             'questions' => function($query) {
-		        $query->orderBy('is_firsts');
+		        $query->orderBy('is_first');
 	    },
             'questions.answers',
         ])->whereId($id)->first();
