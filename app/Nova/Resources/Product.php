@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 
 final class Product extends Resource
 {
@@ -29,7 +30,7 @@ final class Product extends Resource
             ID::make()->sortable(),
             Text::make('Название', 'name')->rules('required'),
             Text::make('ссылка', 'url')->rules('required'),
-            Froala::make('Описание', 'desc')->rules('required'),
+            Textarea::make('Описание', 'desc')->rules('required'),
             Image::make('Фото(превью)', 'img')->rules('required'),
         ];
     }
