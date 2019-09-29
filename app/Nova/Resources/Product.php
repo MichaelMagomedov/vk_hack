@@ -31,7 +31,7 @@ final class Product extends Resource
             Text::make('Название', 'name')->rules('required'),
             Text::make('ссылка', 'url')->rules('required'),
             Textarea::make('Описание', 'desc')->rules('required'),
-            Image::make('Фото(превью)', 'img')->rules('required'),
+            Image::make('Фото(превью)', 'img')->creationRules('required'),
         ];
     }
 }
