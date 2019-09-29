@@ -11,7 +11,6 @@ final class ClientServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->app->bind(ClientService::class);
         $this->app->bind(ClientRepository::class);
     }
 }

@@ -17,4 +17,12 @@ final class ClientRepository
         return CLient::whereExternalId($externalId)->first();
     }
 
+    public function insertOnDuplicate(Client $client): void
+    {
+        Client::query()->updateOrCreate([
+            'external_id' => $client->external_id
+        ], $client->getAttributes());
+    }
+
+
 }

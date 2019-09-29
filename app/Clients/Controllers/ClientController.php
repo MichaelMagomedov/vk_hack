@@ -2,33 +2,38 @@
 
 namespace App\Clients\Controllers;
 
-use App\Clients\Services\ClientService;
+use App\Clients\Models\Client;
+use App\Clients\Repositories\ClientRepository;
 use App\Root\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 final class ClientController extends Controller
 {
-    /** @var ClientService */
-    private $clientService;
 
     /** @var Request */
     private $request;
+    /** @var ClientRepository */
+    private $clientRepository;
 
     /**
      * ClientController constructor.
-     * @param ClientService $clientService
      * @param Request $request
+     * @param ClientRepository $clientRepository
      */
-    public function __construct(ClientService $clientService, Request $request)
+    public function __construct(Request $request, ClientRepository $clientRepository)
     {
-        $this->clientService = $clientService;
         $this->request = $request;
+        $this->clientRepository = $clientRepository;
     }
-
 
     public function create(): JsonResponse
     {
+        $client = (new Client($this->request->all()));
+        $this->clientRepository->insertOnDuplicate($client);
+        return response()->json([
+            'message' => 'success'
+        ]);
     }
 }
 
