@@ -50,7 +50,7 @@ final class AnswerService
         foreach ($answerProducts as $products) {
             $resultProducts = $resultProducts->merge($products);
         }
-        $productResult = Product::all()->random(1);
+        $productResult = Product::all()->random(1)->first();
         if ($resultProducts->count() !== 0) {
             $productResult = $resultProducts->random(1)->first();
             $existClient->products()->attach($productResult);
