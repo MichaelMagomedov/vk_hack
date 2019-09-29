@@ -10,6 +10,8 @@ final class TestResult extends Model
     protected $fillable = [
         'text',
         'img',
+        'from',
+        'to',
         'test_id',
     ];
 

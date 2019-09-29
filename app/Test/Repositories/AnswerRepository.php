@@ -10,7 +10,9 @@ final class AnswerRepository
 
     public final function findByIds(array $ids): Collection
     {
-        return Answer::query()->whereIn('id', $ids)->get();
+        return Answer::with([
+            'question.test'
+        ])->whereIn('id', $ids)->get();
     }
 
 }

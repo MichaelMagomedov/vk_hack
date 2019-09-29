@@ -11,6 +11,7 @@ final class Answer extends Model
     protected $fillable = [
         'text',
         'question_id',
+        'rate',
         'next_question_id',
     ];
 

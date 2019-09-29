@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 
 final class Answer extends Resource
@@ -30,6 +31,7 @@ final class Answer extends Resource
         return [
             ID::make()->sortable(),
             Text::make('Ответ', 'text')->rules('required'),
+            Number::make('Рейтинг ответа', 'rate')->rules('required'),
             BelongsTo::make('Вопрос', 'question', Question::class)->rules('required'),
             BelongsTo::make('Следующий вопрос', 'nextQuestion', Question::class)
                 ->showOnIndex(false)

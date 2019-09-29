@@ -4,6 +4,7 @@ namespace App\Nova\Resources;
 
 use App\Nova\Resource;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
@@ -34,6 +35,8 @@ final class Question extends Resource
                 ->showOnIndex()
                 ->rules('required'),
             Image::make('Картинка вопроса', 'img'),
+            Boolean::make('Первый Вопрос', 'is_first')
+                ->rules('required'),
             BelongsTo::make('Тест', 'test', Test::class),
             HasMany::make('Возможные ответ', 'answers', Answer::class),
         ];

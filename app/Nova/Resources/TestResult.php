@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Textarea;
 
 final class TestResult extends Resource
@@ -29,8 +30,10 @@ final class TestResult extends Resource
     {
         return [
             ID::make()->sortable(),
+            Number::make('Рейтинг ответа от', 'from')->rules('required'),
+            Number::make('Рейтинг ответа до', 'to')->rules('required'),
             Textarea::make('Описание', 'text')->rules('required'),
-            Image::make('Картинка ответа', 'img')->rules('required'),
+            Image::make('Картинка ответа', 'img')->nullable()->creationRules('required'),
             BelongsTo::make('Тест', 'test', Test::class),
         ];
     }
