@@ -13,6 +13,7 @@ final class Question extends Model
         'product_id',
         'img',
         'text',
+        'is_first',
     ];
 
     public $timestamps = false;
