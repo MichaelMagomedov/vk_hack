@@ -16,4 +16,9 @@ final class TestResultRepository
         ])->first();
     }
 
+    public final function findByTest(int $testId) : TestResult
+    {
+        return TestResult::where(['test_id', '=', $testId])->first();
+    }
+
 }

@@ -32,7 +32,7 @@ final class Question extends Resource
         return [
             ID::make()->sortable(),
             Textarea::make('Вопрос', 'text')
-                ->showOnIndex()
+                ->showOnIndex(true)
                 ->rules('required'),
             Image::make('Картинка вопроса', 'img'),
             Boolean::make('Первый Вопрос', 'is_first')

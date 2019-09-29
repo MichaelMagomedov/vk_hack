@@ -3,11 +3,8 @@
 namespace App\Test\Services;
 
 use App\Clients\Repositories\ClientRepository;
-use App\Test\Models\Answer;
-use App\Test\Models\TestResult;
 use App\Test\Repositories\AnswerRepository;
 use App\Test\Repositories\TestResultRepository;
-use http\Exception\InvalidArgumentException;
 use Illuminate\Database\Eloquent\Collection;
 
 final class AnswerService
@@ -43,17 +40,20 @@ final class AnswerService
         $rate = $answers->sum('rate');
         $testId = $answers->get(0)->question->test->id;
         $testResult = $this->testResultRepository->findByTestAndRate($testId, $rate);
-
+        if(!isset($testResult)){
+            $testResult = $this->testResultRepository->findByTest($testId);
+        }
         $answerProducts = $answers->pluck('products');
         $resultProducts = collect([]);
         /** @var Collection $products */
         foreach ($answerProducts as $products) {
             $resultProducts = $resultProducts->merge($products);
         }
-
-        $randomProduct = $resultProducts->random(1)->first();
-        $existClient->products()->attach($randomProduct);
-
+        $randomProduct = null;
+        if ($resultProducts->count() !== 0) {
+            $randomProduct = $resultProducts->random(1)->first();
+            $existClient->products()->attach($randomProduct);
+        }
         return [
             'products' => $randomProduct,
             'result' => $testResult,
